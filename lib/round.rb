@@ -18,6 +18,9 @@ class Round
 
     @card_tracker +=1
     @current_card = deck.cards[@card_tracker]
+
+    @number_correct += 1 if turn.correct?
+
     return turn
   end
 end
