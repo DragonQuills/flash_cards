@@ -22,4 +22,11 @@ class RoundTest < Minitest::Test
   def test_round_exists
     assert_instance_of Round, @round
   end
+
+  def test_round_exposes_attributes
+    assert_equal @deck, @round.deck
+    assert_equal [], @round.turns
+    assert_equal @card_1, @round.current_card
+    assert_equal 0, @round.number_correct
+  end
 end
