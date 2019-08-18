@@ -35,4 +35,33 @@ class RoundTest < Minitest::Test
     turn = temp_round.take_turn("Crona")
     assert_instance_of Turn, turn
   end
+
+  def test_take_turn_tracks_turns
+    temp_round = @round
+    turn = temp_round.take_turn("Crona")
+
+    assert_equal [turn], temp_round.turns
+    assert_equal 1, temp_round.turns.count
+    assert_equal "That's gay!", temp_round.turns.last.feedback
+
+    turn2 = temp_round.take_turn("Shiawase")
+
+    assert_equal [turn, turn2], temp_round.turns
+    assert_equal 2, temp_round.turns.count
+    assert_equal "Eww, that's straight.", temp_round.turns.last.feedback
+  end
+
+  # def test_take_turn_tracks_current_card
+  #   temp_round = @round
+  #   turn = temp_round.take_turn("Crona")
+  #
+  #   assert_equal [turn], temp_round.turns
+  #   assert_equal @card_2, temp_round.current_card
+  #   assert_equal 1, temp_round.number_correct
+  #   assert_equal 1, temp_round.turns.count
+  #   assert_equal "That's gay!", temp_round.turns.last.feedback
+  # end
+  #
+  #
+
 end
