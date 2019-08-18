@@ -62,6 +62,22 @@ class RoundTest < Minitest::Test
     assert_equal @card_3, temp_round.current_card
   end
 
+  def test_take_turn_tracks_number_correct
+    temp_round = @round
+    temp_round.take_turn("Crona")
+
+    assert_equal 1, temp_round.number_correct
+
+    temp_round.take_turn("Shrug")
+
+    assert_equal 1, temp_round.number_correct
+
+    temp_round.take_turn("Mitsuhama")
+
+    assert_equal 2, temp_round.number_correct
+  end
+
+
   # def test_take_turn_tracks_current_card
   #   temp_round = @round
   #   turn = temp_round.take_turn("Crona")
