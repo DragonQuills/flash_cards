@@ -14,6 +14,7 @@ class Round
 
   def take_turn(guess)
     turn = Turn.new(guess, @current_card)
+    @turns.append(turn)
     return turn
   end
 end
