@@ -51,6 +51,17 @@ class RoundTest < Minitest::Test
     assert_equal "Eww, that's straight.", temp_round.turns.last.feedback
   end
 
+  def test_take_turn_tracks_current_card
+    temp_round = @round
+    temp_round.take_turn("Crona")
+
+    assert_equal @card_2, temp_round.current_card
+
+    temp_round.take_turn("I dunno...")
+
+    assert_equal @card_3, temp_round.current_card
+  end
+
   # def test_take_turn_tracks_current_card
   #   temp_round = @round
   #   turn = temp_round.take_turn("Crona")
@@ -61,7 +72,6 @@ class RoundTest < Minitest::Test
   #   assert_equal 1, temp_round.turns.count
   #   assert_equal "That's gay!", temp_round.turns.last.feedback
   # end
-  #
   #
 
 end
