@@ -77,17 +77,23 @@ class RoundTest < Minitest::Test
     assert_equal 2, temp_round.number_correct
   end
 
+  def test_number_correct_by_category
+    temp_round = @round
 
-  # def test_take_turn_tracks_current_card
-  #   temp_round = @round
-  #   turn = temp_round.take_turn("Crona")
-  #
-  #   assert_equal [turn], temp_round.turns
-  #   assert_equal @card_2, temp_round.current_card
-  #   assert_equal 1, temp_round.number_correct
-  #   assert_equal 1, temp_round.turns.count
-  #   assert_equal "That's gay!", temp_round.turns.last.feedback
-  # end
-  #
+    temp_round.take_turn("Crona")
+    assert_equal 1, temp_round.number_correct_by_category(:Pop_Culture)
+    assert_equal 0, temp_round.number_correct_by_category(:Corporate_Knowledge)
+    assert_equal 0, temp_round.number_correct_by_category(:Seattle_Street_Knowledge)
+
+    temp_round.take_turn("Evo")
+    assert_equal 1, temp_round.number_correct_by_category(:Pop_Culture)
+    assert_equal 1, temp_round.number_correct_by_category(:Corporate_Knowledge)
+    assert_equal 0, temp_round.number_correct_by_category(:Seattle_Street_Knowledge)
+
+    temp_round.take_turn("Mitsuhama")
+    assert_equal 1, temp_round.number_correct_by_category(:Pop_Culture)
+    assert_equal 2, temp_round.number_correct_by_category(:Corporate_Knowledge)
+    assert_equal 0, temp_round.number_correct_by_category(:Seattle_Street_Knowledge)
+  end
 
 end
