@@ -96,4 +96,18 @@ class RoundTest < Minitest::Test
     assert_equal 0, temp_round.number_correct_by_category(:Seattle_Street_Knowledge)
   end
 
+  def test_percent_correct
+    temp_round = @round
+
+    temp_round.take_turn("Crona")
+
+    assert_equal 100.0, temp_round.percent_correct
+
+    temp_round.take_turn("Burger King")
+    assert_equal 50.0, temp_round.percent_correct
+
+    temp_round.take_turn("Mitsuhama")
+    assert_equal 66.7, temp_round.percent_correct
+  end
+
 end
