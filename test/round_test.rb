@@ -110,4 +110,22 @@ class RoundTest < Minitest::Test
     assert_equal 66.7, temp_round.percent_correct
   end
 
+  def test_percent_correct_by_category
+    temp_round = @round
+
+    temp_round.take_turn("Crona")
+    assert_equal 100.0, temp_round.percent_correct_by_category(:Pop_Culture)
+    assert_equal 0.0, temp_round.percent_correct_by_category(:Corporate_Knowledge)
+    assert_equal 0.0, temp_round.percent_correct_by_category(:Seattle_Street_Knowledge)
+
+    temp_round.take_turn("Evo")
+    assert_equal 100.0, temp_round.percent_correct_by_category(:Pop_Culture)
+    assert_equal 100.0, temp_round.percent_correct_by_category(:Corporate_Knowledge)
+    assert_equal 0.0, temp_round.percent_correct_by_category(:Seattle_Street_Knowledge)
+
+    temp_round.take_turn("Shiawase")
+    assert_equal 100.0, temp_round.percent_correct_by_category(:Pop_Culture)
+    assert_equal 50.0, temp_round.percent_correct_by_category(:Corporate_Knowledge)
+    assert_equal 0.0, temp_round.percent_correct_by_category(:Seattle_Street_Knowledge)
+  end
 end
