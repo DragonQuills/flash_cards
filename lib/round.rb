@@ -3,7 +3,7 @@ require './lib/deck'
 require './lib/turn'
 
 class Round
-  attr_reader :deck, :turns, :current_card, :number_correct
+  attr_reader :deck, :turns, :current_card, :number_correct, :card_tracker
   def initialize(deck)
     @deck = deck
     @turns = []
