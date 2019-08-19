@@ -51,4 +51,13 @@ class Round
     percent = (correct.to_f / total.to_f) * 100.0
     percent.round(1)
   end
+
+  def category_score
+    categories_and_scores = {}
+    turns.each do |turn|
+      next if categories_and_scores.has_key?(turn.card.category)
+      categories_and_scores[turn.card.category] = percent_correct_by_category(turn.card.category)
+    end
+    return categories_and_scores
+  end
 end
