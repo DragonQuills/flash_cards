@@ -14,7 +14,9 @@ deck = Deck.new(cards)
 
 round = Round.new(deck)
 
-# puts "Welcome! You're playing with " +  deck.count + " cards."
-# puts "-------------------------------------------------""
-# puts "This is card number 1 out of 4.
-# Question: What is 5 + 5?
+puts "Welcome! You're playing with " +  deck.count + " cards."
+puts "-------------------------------------------------"
+
+
+# puts "This is card number " + (round.card_tracker + 1) out of 4.
+# Question:
