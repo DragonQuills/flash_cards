@@ -31,4 +31,13 @@ class Round
     end
     return correct
   end
+
+  def percent_correct
+    correct = 0
+    @turns.each do |turn|
+      correct += 1 if turn.correct?
+    end
+    percent = (correct.to_f / turns.count.to_f) * 100.0
+    percent.round(1)
+  end
 end
