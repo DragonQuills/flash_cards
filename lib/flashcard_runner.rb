@@ -17,8 +17,9 @@ round = Round.new(deck)
 puts "Welcome! You're playing with " +  round.deck.count.to_s + " cards."
 puts "-------------------------------------------------"
 
-
-puts "This is card number " + (round.card_tracker + 1).to_s  + " out of " + round.deck.count.to_s + "."
-puts "Question: " + round.current_card.question
-answer = gets.chomp
-puts round.take_turn(answer).feedback
+while round.turns.count < round.deck.count
+  puts "This is card number " + (round.card_tracker + 1).to_s  + " out of " + round.deck.count.to_s + "."
+  puts "Question: " + round.current_card.question
+  answer = gets.chomp
+  puts round.take_turn(answer).feedback
+end
