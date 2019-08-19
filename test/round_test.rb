@@ -128,4 +128,21 @@ class RoundTest < Minitest::Test
     assert_equal 50.0, temp_round.percent_correct_by_category(:Corporate_Knowledge)
     assert_equal 0.0, temp_round.percent_correct_by_category(:Seattle_Street_Knowledge)
   end
+
+  def test_category_score_returns_categories_with_percent_correct
+    temp_round = @round
+    dict1 = {:Pop_Culture => 100.0}
+    dict2 = {:Pop_Culture => 100.0 , :Corporate_Knowledge => 0.0}
+    dict3 = {:Pop_Culture => 100.0 , :Corporate_Knowledge => 50.0}
+
+    temp_round.take_turn("Crona")
+
+    assert_equal dict1, temp_round.category_score
+
+    temp_round.take_turn("Burger King")
+    assert_equal dict2, temp_round.category_score
+
+    temp_round.take_turn("Mitsuhama")
+    assert_equal dict3, temp_round.category_score
+  end
 end
