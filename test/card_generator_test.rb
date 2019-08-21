@@ -21,6 +21,10 @@ class CardGeneratorTest < Minitest::Test
 
     cards_list = [card_1, card_2, card_3, card_4]
 
-    assert_equal cards_list, generator.cards
+    assert_equal card_1.question, generator.cards[0].question
+    assert_equal card_2.question, generator.cards[1].question
+    assert_equal card_3.question, generator.cards[2].question
+    assert_equal card_4.question, generator.cards[3].question
+
   end
 end
