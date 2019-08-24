@@ -2,13 +2,11 @@ require './lib/card'
 require './lib/deck'
 require './lib/turn'
 require './lib/round'
+require './lib/card_generator'
 
-card_1 = Card.new("Who is the cutest cat in the whole world?", "Crona", :Pop_Culture)
-card_2 = Card.new("What is the corp that cares?", "Evo", :Corporate_Knowledge)
-card_3 = Card.new("Which corp will kill you if you fail a run?", "Mitsuhama", :Corporate_Knowledge)
-card_4 = Card.new("What area of Seattle is currently fighting to be classified as a district?", "Orc Underground", :Seattle_Street_Knowledge)
+generator = CardGenerator.new("./test/cards_file.txt")
 
-cards = [card_1, card_2, card_3, card_4]
+cards = generator.cards
 
 deck = Deck.new(cards)
 
