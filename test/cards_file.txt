@@ -1,0 +1,4 @@
+Who is the cutest cat in the whole world?,Crona,Pop_Culture
+What is the corp that cares?,Evo,Corporate_Knowledge
+Which corp will kill you if you fail a run?,Mitsuhama,Corporate_Knowledge
+What area of Seattle is currently fighting to be classified as a district?,Orc Underground,Seattle_Street_Knowledge
