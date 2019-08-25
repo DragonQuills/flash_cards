@@ -4,9 +4,22 @@ require './lib/turn'
 require './lib/round'
 require './lib/card_generator'
 
-generator = CardGenerator.new("./test/cards_file.txt")
 
-cards = generator.cards
+#generator = CardGenerator.new("./test/cards_file.txt")
+#cards = generator.cards
+
+require 'httparty'
+
+url = "https://opentdb.com/api.php?amount=10&difficulty=easy"
+responce = HTTParty.get(url)
+cards_data = responce["results"]
+cards = []
+
+cards_data.each do |data|
+  new_card = Card.new(data["question"], data["correct_answer"], data["category"].gsub(" ", "_").to_sym)
+  cards.append(new_card)
+end
+
 
 deck = Deck.new(cards)
 
